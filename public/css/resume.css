@@ -1,0 +1,47 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700);
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+@import url(http://fonts.googleapis.com/css?family=Dosis:400,700);
+
+body {
+    padding: 0;
+    /*font-family: 'Raleway', sans-serif !important;*/
+    font-family: 'Dosis', sans-serif !important;
+}
+
+.timespan {
+    float: right;
+}
+
+h1 {
+    /*font-family: 'Lobster', cursive;*/
+    font-family: 'Dosis', sans-serif;
+}
+
+h3 {
+    font-family: 'Dosis', sans-serif;
+    font-style: normal;
+}
+
+h3~p {
+    margin-left: 16%;
+    padding: 0;
+    display: block;
+    font-size: 104%;
+    line-height: 24px;
+    width: 84%;
+}
+
+h3+p {
+    margin-left: inherit;
+}
+
+.container {
+    background-color: white;
+    width: 100%;
+    border-bottom: none;
+}
+
+.resume {
+    background-color: white;
+    padding: 40px 80px;
+}
