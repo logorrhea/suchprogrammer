@@ -3,3 +3,4 @@ tmp/
 routes/
 app/tmp/
 app/routes/
+*.swp
