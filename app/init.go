@@ -1,6 +1,9 @@
 package app
 
-import "github.com/revel/revel"
+import (
+	"github.com/revel/revel"
+	"suchprogrammer/app/filters"
+)
 
 func init() {
 	// Filters is the default set of global filters.
@@ -15,6 +18,7 @@ func init() {
 		revel.I18nFilter,              // Resolve the requested language
 		HeaderFilter,                  // Add some security based headers
 		revel.InterceptorFilter,       // Run interceptors around the action.
+		filters.ActionParseFilter,     // Stick the controller/action in RenderArgs
 		revel.CompressFilter,          // Compress the result.
 		revel.ActionInvoker,           // Invoke the action.
 	}
