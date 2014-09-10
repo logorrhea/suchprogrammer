@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	_ "fmt"
 	"github.com/revel/revel"
 	"io/ioutil"
 	"net/http"

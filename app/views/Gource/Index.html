@@ -1,34 +1,18 @@
-{{set . "title" "Gource"}}
-{{template "header.html" .}}
-
-<br>
-<br>
-
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="input-group">
-                {{with $field := field "query" .}}
-                <input id="query" class="form-control" type="text"
-                        name="{{$field.Name}}" value="{{$field.Flash}}"
-                        placeholder="Search for a Github repository" />
-                {{end}}
-                <div class="input-group-btn">
-                    <button class="btn btn-default" id="searchBtn">Search</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<br>
-<br>
-<br>
-
-
-<div class="container">
-    <pre id="response" style="display: none;"></pre>
-</div>
-
-{{template "footer.html" .}}
-
+<!DOCTYPE HTML>
+<html ng-app="Gourcey">
+<head>
+    <title>Gourcey</title>
+    <link href="/public/css/gourcey.css" rel="stylesheet" type="text/css" />
+    <script src="/public/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="/public/js/angular.js" type="text/javascript"></script>
+    <script src="/public/js/angular-route.js" type="text/javascript"></script>
+    <script src="/public/js/app.js" type="text/javascript"></script>
+    <script src="/public/js/conf/routes.js" type="text/javascript"></script>
+    <script src="/public/js/controllers/GourceyController.js" type="text/javascript"></script>
+    <script src="/public/js/controllers/GithubApiController.js" type="text/javascript"></script>
+</head>
+<body ng-controller="GourceyController">
+    <div ng-view></div>
+    {{template "footer.html" .}}
+</body>
+</html>

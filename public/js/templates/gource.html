@@ -1,0 +1,15 @@
+<div class="top" ng-controller="GithubApiController">
+    <form ng-submit="search()">
+        <input id="query" type="text" ng-model="query" />
+    </form>
+</div>
+
+<ul ng-show="repos.length">
+    <li ng-repeat="rep in repos | orderBy:'followers'">
+        <a href="{{rep.url}}" target="_blank">{{rep.full_name}}</a>
+    </li>
+</ul>
+
+<div class="container">
+    <pre id="response" style="display: none;"></pre>
+</div>
