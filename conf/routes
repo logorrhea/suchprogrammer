@@ -8,6 +8,8 @@ GET     /                                       App.Index
 
 GET     /resume                                 App.Resume
 
+GET     /gource                                 Gource.Index
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
