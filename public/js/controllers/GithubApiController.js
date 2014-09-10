@@ -12,8 +12,8 @@ angular.module('Gourcey').controller('GithubApiController', ['$scope', '$http',
         $scope.search = function() {
             $http.post('/github/search', {query: $scope.query})
                 .success(function(data, status) {
-                    $scope.repos = angular.fromJson(data).items;
-                    console.log($scope.repos);
+                    var jsonData = angular.fromJson(JSON.parse(data))
+                    $scope.repos = jsonData.items;
                 })
                 .error(function(data, status) {
                     //console.log('Error?');
