@@ -5,6 +5,7 @@ import (
 	"github.com/revel/revel"
 	"io/ioutil"
 	"net/http"
+	"os/exec"
 )
 
 type Github struct {
@@ -30,6 +31,8 @@ func (c Github) Commits() revel.Result {
 	fmt.Println(query)
 	resp, err := http.Get(query)
 
+	pullRepo(repo)
+
 	var responseBody string
 	if err != nil {
 		responseBody = err.Error()
@@ -40,4 +43,28 @@ func (c Github) Commits() revel.Result {
 	}
 
 	return c.RenderJson(responseBody)
+}
+
+func (c Github) Testing() revel.Result {
+	pullRepo(c.Params.Get("repo"))
+	return c.RenderJson([]string{})
+}
+
+func pullRepo(repoName string) {
+
+	// Change directory to user's temp directory
+
+	// Run git pull {repoName}
+
+	// Respond?
+
+	execResults := exec.Command("git", "st")
+	response, err := execResults.Output()
+	if err != nil {
+		fmt.Println(err.Error())
+	} else {
+		fmt.Println(string(response))
+	}
+	repoURL := "git@github.com:" + repoName
+	fmt.Println(repoURL)
 }

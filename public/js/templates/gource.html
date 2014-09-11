@@ -1,12 +1,21 @@
+<a href="#/sockets">Socket Test</a>
+<hr>
+
+
 <div class="top">
     <form ng-submit="search()">
         <input id="query" type="text" ng-model="query" />
     </form>
+    <div>
+        <button ng-click="testing()">Test Pull Repo</button>
+    </div>
 </div>
 
 <ul ng-show="repos.length">
-    <li ng-repeat="rep in repos | orderBy:'followers'">
-        <a href="" ng-click="getCommits(rep)">{{rep.full_name}}</a>
+    <li ng-repeat="rep in repos | orderBy:'stargazers_count':true">
+        <a href="" ng-click="getCommits(rep)">
+            {{rep.full_name}} ({{rep.stargazers_count}} followers)
+        </a>
     </li>
 </ul>
 

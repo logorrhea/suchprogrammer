@@ -8,6 +8,10 @@ angular.module('Gourcey').config(['$routeProvider', '$locationProvider',
                 controller: 'GithubApiController',
                 templateUrl: '/public/js/templates/gource.html'
             })
+            .when('/sockets', {
+                controller: 'SocketController',
+                templateUrl: '/public/js/templates/sockets.html'
+            })
             .otherwise({redirectTo: '/'});
     }
 ]);

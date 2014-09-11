@@ -12,7 +12,7 @@ angular.module('Gourcey').controller('GithubApiController', ['$scope', '$http',
         $scope.search = function() {
             $http.post('/github/search', {query: $scope.query})
                 .success(function(data, status) {
-                    var jsonData = angular.fromJson(JSON.parse(data))
+                    var jsonData = angular.fromJson(JSON.parse(data));
                     $scope.repos = jsonData.items;
                 })
                 .error(function(data, status) {
@@ -33,6 +33,11 @@ angular.module('Gourcey').controller('GithubApiController', ['$scope', '$http',
                     console.log(status);
                     console.log(data);
                 });
+        };
+
+        $scope.testing = function() {
+            console.log('testing for ' + $scope.query);
+            $http.get('/github/testing', {repo: $scope.query});
         };
 
     }
