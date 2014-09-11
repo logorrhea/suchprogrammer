@@ -6,8 +6,8 @@ angular.module('Gourcey').controller('GithubApiController', ['$scope', '$http',
         
         $scope.query = '';
         $scope.repo = null;
-        $scope.commits = null;
         $scope.repos = [];
+        $scope.commits = [];
 
         $scope.search = function() {
             $http.post('/github/search', {query: $scope.query})
@@ -16,7 +16,22 @@ angular.module('Gourcey').controller('GithubApiController', ['$scope', '$http',
                     $scope.repos = jsonData.items;
                 })
                 .error(function(data, status) {
-                    //console.log('Error?');
+                    console.log(status);
+                    console.log(data);
+                });
+        };
+
+        $scope.getCommits = function(repo) {
+            $scope.repos = [];
+            $scope.commits = [];
+            $http.post('/github/commits', {repo: repo.full_name})
+                .success(function(data, status) {
+                    var jsonData = angular.fromJson(JSON.parse(data));
+                    $scope.commits = jsonData;
+                })
+                .error(function(data, status) {
+                    console.log(status);
+                    console.log(data);
                 });
         };
 

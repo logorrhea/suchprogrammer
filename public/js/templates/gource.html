@@ -6,7 +6,13 @@
 
 <ul ng-show="repos.length">
     <li ng-repeat="rep in repos | orderBy:'followers'">
-        <a href="{{rep.url}}" target="_blank">{{rep.full_name}}</a>
+        <a href="" ng-click="getCommits(rep)">{{rep.full_name}}</a>
+    </li>
+</ul>
+
+<ul ng-show="commits.length">
+    <li ng-repeat="commit in commits">
+    {{commit.sha}} <i>(@{{commit.author.login}})</i>
     </li>
 </ul>
 

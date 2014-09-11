@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"github.com/revel/revel"
 	"io/ioutil"
 	"net/http"
@@ -21,4 +22,22 @@ func (c Github) Search() revel.Result {
 		body := string(bodyBytes[:])
 		return c.RenderJson(body)
 	}
+}
+
+func (c Github) Commits() revel.Result {
+	repo := c.Params.Get("repo")
+	query := "https://api.github.com/repos/" + repo + "/commits"
+	fmt.Println(query)
+	resp, err := http.Get(query)
+
+	var responseBody string
+	if err != nil {
+		responseBody = err.Error()
+		c.Response.Status = 500
+	} else {
+		bodyBytes, _ := ioutil.ReadAll(resp.Body)
+		responseBody = string(bodyBytes)
+	}
+
+	return c.RenderJson(responseBody)
 }
