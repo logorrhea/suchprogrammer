@@ -1,5 +1,15 @@
 <a href="#/">Home</a>
 <hr>
 
+
 <h1 ng-show="loading">{{percentComplete}}</h1>
-<h1 ng-hide="loading">Finished!</h1>
+<h1 ng-hide="loading">
+    <span ng-show="percentComplete != 0">
+    Finished!
+    </span>
+    <span ng-show="percentComplete == 0">
+        <button ng-click="openSocketConnection()">
+            Pretend to Load Stuff
+        </button>
+    </span>
+</h1>
