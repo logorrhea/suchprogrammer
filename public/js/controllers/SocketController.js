@@ -12,7 +12,7 @@ angular.module('Gourcey').controller('SocketController', ['$scope', 'WebSocket',
         });
 
         WebSocket.onmessage(function(event) {
-            $scope.percentComplete = event.data;
+            $scope.percentComplete = event.data + "%";
         });
 
         WebSocket.onclose(function() {
