@@ -1,7 +1,6 @@
 <a href="#/sockets">Socket Test</a>
 <hr>
 
-
 <div class="top">
     <form ng-submit="search()">
         <input id="query" type="text" ng-model="query" />
@@ -21,10 +20,14 @@
 
 <ul ng-show="commits.length">
     <li ng-repeat="commit in commits">
-    {{commit.sha}} <i>(@{{commit.author.login}})</i>
+        <a href="" ng-click="getFileTree(commit.sha)">
+            {{commit.sha}} <i>(@{{commit.author.login}})</i>
+        </a>
     </li>
 </ul>
 
 <div class="container">
     <pre id="response" style="display: none;"></pre>
 </div>
+
+<button ng-click="regenerate()">Regenerate</button>

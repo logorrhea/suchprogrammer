@@ -1,6 +1,7 @@
 (function() {
 'use strict';
 
+// This module also relies on D3.js
 angular.module('Gourcey').controller('GithubApiController', ['$scope', '$http',
     function($scope, $http) {
         
@@ -24,6 +25,7 @@ angular.module('Gourcey').controller('GithubApiController', ['$scope', '$http',
         $scope.getCommits = function(repo) {
             $scope.repos = [];
             $scope.commits = [];
+            $scope.repo = repo;
             $http.post('/github/commits', {repo: repo.full_name})
                 .success(function(data, status) {
                     var jsonData = angular.fromJson(JSON.parse(data));
@@ -34,10 +36,26 @@ angular.module('Gourcey').controller('GithubApiController', ['$scope', '$http',
                     console.log(data);
                 });
         };
+        
+        $scope.getFileTree = function(sha) {
+            $http.post('/github/tree', { repo: $scope.repo.full_name, sha: sha })
+                .success(function(data, status) {
+                    var jsonData = angular.fromJson(JSON.parse(data));
+                    console.log(jsonData);
+                })
+                .error(function(data, status) {
+                    console.log(status);
+                    console.log(data);
+                });
+        };
 
         $scope.testing = function() {
             console.log('testing for ' + $scope.query);
             $http.get('/github/testing', {repo: $scope.query});
+        };
+
+        $scope.regenerate = function() {
+            regenerate(false);
         };
 
     }

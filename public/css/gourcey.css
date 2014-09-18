@@ -4,3 +4,14 @@
     line-height: 20px;
     font-size: 1.5em;
 }
+
+svg {
+    float: left;
+    width: 840px;
+    height: 600px;
+    font-family: helvetica, sans-serif;
+}
+
+path, line {
+    stroke: #777;
+}
